@@ -18,6 +18,8 @@ public abstract class LwM2mAbstractSampler extends AbstractSampler {
 
     @Override
     public SampleResult sample(Entry entry) {
+        log.info("LwM2mAbstractSampler");
+
         if (endpoint.equals("")) {
             setEndpoint();
         }
@@ -33,7 +35,7 @@ public abstract class LwM2mAbstractSampler extends AbstractSampler {
         String machineName;
         try {
             machineName = InetAddress.getLocalHost().getHostName();
-            endpoint = "jmeter-"+machineName+"-"+threadNumber;
+            endpoint = "jmeter"+threadNumber;
         } catch (UnknownHostException ex) {
             log.error("An error occured trying to get the local host name");
             log.error(ex.getStackTrace().toString());

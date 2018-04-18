@@ -45,6 +45,8 @@ public class NotifyObserversSampler extends LwM2mAbstractSampler implements Test
 
     @Override
     public void send(JMeterContext context, SampleResult result) {
+        log.info("NotifyObserversSampler Sending");
+        log.info("Endpoint" + endpoint);
         JMeterVariables variables = context.getVariables();
         ConcurrentHashMap<String, MockLwM2mClient> clients = (ConcurrentHashMap<String, MockLwM2mClient>) variables.getObject("lwm2mClients");
         MockLwM2mClient client = clients.get(endpoint);
@@ -60,6 +62,8 @@ public class NotifyObserversSampler extends LwM2mAbstractSampler implements Test
                 log.debug("Could not send observation for " + objectId + "/" + instanceId + "/" + resourceId);
             }
             result.sampleEnd();
+        } else {
+            log.info("No client");
         }
     }
 

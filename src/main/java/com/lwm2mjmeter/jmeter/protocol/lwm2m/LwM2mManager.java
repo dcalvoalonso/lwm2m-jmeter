@@ -166,7 +166,8 @@ public abstract class LwM2mManager extends ConfigTestElement implements LoopIter
         String machineName;
         try {
             machineName = InetAddress.getLocalHost().getHostName();
-            endpoint = "jmeter-"+machineName+"-"+threadNumber;
+            //endpoint = "jmeter-"+machineName+"-"+threadNumber;
+            endpoint = "jmeter"+threadNumber;
         } catch (UnknownHostException ex) {
             log.error("An error occured trying to get the local host name");
             log.error(ex.getStackTrace().toString());
